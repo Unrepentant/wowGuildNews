@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2/jquery.min.js"></script>
+
+	<!-- demo only -->
+	<link href="demo/demo.css" rel="stylesheet">
+
+	<!-- wowhead tooltips -->
+	<script type="text/javascript" src="http://static.wowhead.com/widgets/power.js"></script>
+	<script>var wowhead_tooltips = { "colorlinks": true, "iconizelinks": true, "renamelinks": true }</script>
+
+	<!-- wow guild news plugin -->
+	<link href="css/wowguildnews.css" rel="stylesheet">
+	<script src="js/jquery.wowGuildNews.js"></script>
+
+	<script type="text/javascript">
+	jQuery(function($){
+		$('.guildnews').wowGuildNews({
+
+			// ** Appearance **
+			// number of news items to show; 25 max
+			show    : 25,
+			// small icon size ( true = 18x18; false = 56x56 )
+			// 18x18 and 56x56 are the actual icon image sizes, adjust as desired in the css
+			small   : true,
+
+			// ** Guild Info ***
+			// battlenet domain - "us", "eu", "kr", "tw" or "sea"; use "cn" for china
+			region  : "us",
+			// locale - "en", "es", "pt", "en", "fr", "ru", "de", "it", "ko" or "zh"
+			locale  : "en",
+			// game server name; include spaces and apostrophes
+			server  : "Durotan",
+			// guild name; include spaces and apostrophes
+			guild   : "The Disreputable Dogs",
+
+		// *** Language ***
+			text : {
+				// guild info
+				"guildinfo" : "(Level {level} {faction} Guild, {server})",
+				"faction"   : [ "Alliance", "Horde" ],
+
+				// news listing
+				// [icon] Fred purchased [Foo]. 1 hour ago.
+				// [icon] Barney crafted [Bar]. Yesterday.
+				// [icon] Dino earned the achievement [Bark] for 10 points. 45 minutes ago.
+				// [icon] The guild earned the acheivement [Super Foo] for 10 points. Just now.
+				"item"      : "{icon} {player} {action} {item}. {time}",
+				"achv"      : "{icon} {player} earned the achievement {ach} for {points} points. {time}",
+
+				// item actions; replaces {action} above
+				"obtained"  : "obtained",
+				"crafted"   : "crafted",
+				"purchased" : "purchased",
+
+				// guild achievement
+				// (replaces {player} for guild achievements) "The guild earned..."
+				"guild"     : "The guild",
+
+				// time
+				"recent" : "Recently", // only shown if time is somehow negative - issues with daylight savings?
+				"now"    : "Just now",
+				"min"    : "1 minute ago",
+				"mins"   : "minutes ago",
+				"hour"   : "1 hour ago",
+				"hours"  : "hours ago",
+				"yday"   : "Yesterday",
+				"days"   : "days ago",
+				"weeks"  : "weeks ago"
+			},
+
+			// *** tooltip URLs ***
+			itemTooltip : "http://{locale}.wowhead.com/item={id}",
+			achTooltip  : "http://{locale}.wowhead.com/achievement={id}",
+
+			// ** Callbacks **
+			// initialized callback function
+			// el = $('.guildnews') - element that the plugin is initialized on
+			initialized: function(el){}
+
+		});
+
+	});
+	</script>
+
+</head>
+<body>
+
+<div id="wrapper">
+	<div class="guildnews"></div>
+</div>
+
+</body></html>

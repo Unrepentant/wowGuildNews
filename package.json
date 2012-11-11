@@ -1,0 +1,31 @@
+{
+    "name": "wowGuildNews",
+    "version": "1.0 beta",
+    "title": "wowGuildNews",
+    "author": {
+        "name": "Rob Garrison",
+        "url": "https://github.com/Mottie"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        }
+    ],
+    "dependencies": {
+        "jquery": ">=1.2"
+    },
+    "description": "World of Warcraft Guild News Widget",
+    "keywords": [
+        "World of Warcraft",
+        "news"
+    ],
+    "homepage": "https://github.com/Mottie/wowGuildNews",
+    "demo": "http://mottie.github.com/wowGuildNews/",
+    "docs": "https://github.com/Mottie/wowGuildNews/wiki",
+    "files": [
+        "css/wowguildnews.css",
+        "js/jquery.wowGuildNews.js",
+        "js/jquery.wowGuildNews.min.js"
+    ]
+}

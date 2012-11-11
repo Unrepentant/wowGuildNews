@@ -1,0 +1,42 @@
+﻿/* overall wrapper */
+.wow-guild-news { font-family: Arial,Verdana,Segoe,sans-serif; font-size: 12px; line-height: 1.3em; }
+
+/* guild name */
+h3.wow-guild-name { font-size: 16px; font-weight: bold; text-align:center; margin: 5px; }
+h3.wow-guild-name a { text-decoration: none; }
+
+/* guild info */
+h4.wow-guild-info { text-align:center; font-size: 12px; margin: 5px; padding-bottom: 3px; border-bottom: #555 1px solid; }
+.wow-guild-level { }   /* "Level ##" */
+.wow-guild-faction { } /* "Alliance" or "Horde" */
+.wow-guild-realm { }   /* realm name */
+
+/* news items */
+.wow-news-item { } /* wraps each news item */
+
+/* item/achievement icon */
+.wow-icon { display: inline-block; } /* icon wrapper */
+.wow-icon-small { width: 18px; height: 18px; }
+.wow-icon-large { width: 56px; height: 56px; }
+.wow-icon img { border: 0; vertical-align: middle; }
+
+/* character name - not colored by class name */
+a.wow-character-name { }
+
+/* <span class="wow-action-type wow-action-obtained">obtained</span> */
+.wow-action-type { color: #ddd; }
+.wow-action-obtained { }
+.wow-action-crafted { }
+.wow-action-purchased { }
+.wow-action-earned { } /* earned the achievement */
+
+/* wowhead tooltip links */
+a.wow-item { }
+a.wow-character-achievement { } /* character achievement name */
+a.wow-guild-achievement { } /* guild achievement name */
+
+/* achievement points number */
+.wow-points { color: #c55; }
+
+/* time (recently/minutes ago/hours ago/yesterday... */
+.wow-action-time { color: #aaa; font-size: 0.9em; }
