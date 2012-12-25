@@ -18,6 +18,12 @@
 
 ![news](http://mottie.github.com/wowGuildNews/demo/screen1.jpg)
 
+### Playground
+
+* Test the plugin out [here](http://jsfiddle.net/Mottie/nvgXp/4/).
+* If it doesn't work after something has changed, click on the [ JSLint ] button at the top. It should show if any problems were introduced in the code.
+* If the demo still doesn't work, click [ Update ] and email me a link.
+
 ### **Documentation**
 
 * [Setup](https://github.com/Mottie/wowGuildNews/wiki/Setup)
