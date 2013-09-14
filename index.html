@@ -60,16 +60,22 @@
 				"guild"     : "The guild",
 
 				// time
+				"future" : "in",
+				"past"   : "ago",
 				"recent" : "Recently", // only shown if time is somehow negative - issues with daylight savings?
 				"now"    : "Just now",
-				"min"    : "1 minute ago",
-				"mins"   : "minutes ago",
-				"hour"   : "1 hour ago",
-				"hours"  : "hours ago",
+				"min"    : "1 minute",
+				"mins"   : "minutes",
+				"hour"   : "1 hour",
+				"hours"  : "hours",
 				"yday"   : "Yesterday",
-				"days"   : "days ago",
-				"weeks"  : "weeks ago"
+				"days"   : "days",
+				"weeks"  : "weeks"
 			},
+
+			// Battle.net armory shows future times (e.g. "in 10 minutes")
+			// to change all future times to show "Recently", set this option to false
+			showFutureTime : true,
 
 			// *** tooltip URLs ***
 			itemTooltip : "http://{locale}.wowhead.com/item={id}",

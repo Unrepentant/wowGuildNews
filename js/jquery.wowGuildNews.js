@@ -1,4 +1,4 @@
-﻿/* wowGuildNews v1.0 beta
+﻿/* wowGuildNews v1.1 beta
  https://github.com/Mottie/wowGuildNews
  by Rob Garrison (Mottie) MIT licensed.
  Usage:
@@ -62,16 +62,20 @@
 					"guild"     : "The guild",
 
 					// time
+					"future" : "in",
+					"past"   : "ago",
 					"recent" : "Recently",
 					"now"    : "Just now",
-					"min"    : "1 minute ago",
-					"mins"   : "minutes ago",
-					"hour"   : "1 hour ago",
-					"hours"  : "hours ago",
+					"min"    : "1 minute",
+					"mins"   : "minutes",
+					"hour"   : "1 hour",
+					"hours"  : "hours",
 					"yday"   : "Yesterday",
-					"days"   : "days ago",
-					"weeks"  : "weeks ago"
+					"days"   : "days",
+					"weeks"  : "weeks"
 				},
+
+				showFutureTime : true,
 
 				// *** tooltip URLs ***
 				itemTooltip : "http://{locale}.wowhead.com/item={id}",
@@ -101,24 +105,28 @@
 			// modified from http://ejohn.org/blog/javascript-pretty-date/
 			prettyDate = function(time){
 				var date = new Date(time || ""),
-				// correct for local time
-				l = parseInt(date.toLocaleTimeString().split(':'),10),
-				h = date.getHours(),
-				n = (h - l !== 0) ? date.getTime(date.setHours(l)) : date.getTime(),
 				// get number of minutes
-				diff = (((new Date()).getTime() - n) / 1000),
+				diff = (((new Date()).getTime() - date.getTime()) / 1000),
 				day_diff = Math.floor(diff / 86400);
-				if (day_diff === -1) { return o.text.recent; } // fixes time zone/daylight savings time issue?
+				// Blizzard is showing time in the future, so just return recently instead
+				if (day_diff === -1) {
+					return !o.showFutureTime && o.text.recent ||
+						diff > -60 && o.text.recent ||
+						diff > -120 && o.text.future + ' ' + o.text.min ||
+						diff > -3600 && o.text.future + ' ' + -Math.floor(diff/60) + ' ' + o.text.mins ||
+						diff > -7200 && o.text.future + ' ' + o.text.hour ||
+						diff > -86400 && o.text.future + ' ' + -Math.floor( diff / 3600 ) + ' ' + o.text.hours;
+				}
 				if ( isNaN(day_diff) || day_diff < 0 || day_diff >= 31 ) { return ''; }
 				return day_diff === 0 && (
 					diff < 60 && o.text.now ||
-					diff < 120 && ' ' + o.text.min ||
-					diff < 3600 && Math.floor( diff / 60 ) + ' ' + o.text.mins ||
-					diff < 7200 && o.text.hour ||
-					diff < 86400 && Math.floor( diff / 3600 ) + ' ' + o.text.hours) ||
+					diff < 120 && ' ' + o.text.min + ' ' + o.text.past ||
+					diff < 3600 && Math.floor( diff / 60 ) + ' ' + o.text.mins + ' ' + o.text.past ||
+					diff < 7200 && o.text.hour + ' ' + o.text.past ||
+					diff < 86400 && Math.floor( diff / 3600 ) + ' ' + o.text.hours + ' ' + o.text.past) ||
 					day_diff === 1 && ' ' + o.text.yday ||
-					day_diff < 7 && day_diff + ' ' + o.text.days ||
-					day_diff < 31 && Math.ceil( day_diff / 7 ) + ' ' + o.text.weeks;
+					day_diff < 7 && day_diff + ' ' + o.text.days + ' ' + o.text.past ||
+					day_diff < 31 && Math.ceil( day_diff / 7 ) + ' ' + o.text.weeks + ' ' + o.text.past;
 			},
 
 			getWowInfo = function(d){
